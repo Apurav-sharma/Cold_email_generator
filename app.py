@@ -54,7 +54,8 @@ url1 = st.sidebar.text_input("Enter Your Url1 ")
 url2 = st.sidebar.text_input("Enter Your Url2 ")
 url3 = st.sidebar.text_input("Enter Your Url3 ")
 
-button = st.button('Give Answer')
+button = st.sidebar.button("Give Answer")
+
 
 if button:
     # result = output([url1, url2, url3], question)
