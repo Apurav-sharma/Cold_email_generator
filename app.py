@@ -19,7 +19,7 @@ def get_llm():
     return llm
 
 def load_embedder():
-    model = HuggingFaceEmbeddings(model_name="./models/all-MiniLM-L6-v2");
+    model = HuggingFaceEmbeddings(model_name="./models/all-MiniLM-L6-v2")
     return model
 
 def output (urls, question):
