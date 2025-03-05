@@ -23,8 +23,9 @@ button = st.button("Get answer")
 
 if button:
     if question.strip():
-        answer = get_answer(question)
-        st.write("Generating answer...")
-        st.success(answer.content)
+        with st.spinner("Wait for it..."):
+            answer = get_answer(question)
+            st.write("Generating answer...")
+            st.success(answer.content)
     else:
         st.warning("Please enter a question.")
