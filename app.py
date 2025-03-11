@@ -6,6 +6,9 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQAWithSourcesChain
 
+
+st.set_page_config(page_title="Main App", layout="wide")
+
 st.title("Question Answering Bot")
 
 @st.cache_resource
@@ -53,6 +56,23 @@ if "vector_index" not in st.session_state:
     st.session_state.vector_index = None
 if "last_fetched_urls" not in st.session_state:
     st.session_state.last_fetched_urls = []
+
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebarNav"] ul {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+page = st.sidebar.selectbox("Use:", ["information retriever", "Open LLM"])
+
+if page == "Open LLM":
+    st.sidebar.page_link("pages/freelm.py", label="Go to Open LLM")
+
 
 st.sidebar.title("Enter Your URLs")
 url1 = st.sidebar.text_input("Enter URL 1", key="url1")

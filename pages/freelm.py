@@ -1,5 +1,6 @@
 import streamlit as st
 from langchain_groq import ChatGroq
+from langchain.memory import ConversationBufferMemory
 
 def get_llm():
     return  ChatGroq(
@@ -16,6 +17,17 @@ def get_answer(question):
 
 st.title("OpenLM")
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebarNav"] ul {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 st.subheader("Ask anything")
 
 question = st.text_input("Enter your question")
@@ -27,5 +39,6 @@ if button:
             answer = get_answer(question)
             st.write("Generating answer...")
             st.success(answer.content)
+            # st.write("Generated answer")
     else:
         st.warning("Please enter a question.")
